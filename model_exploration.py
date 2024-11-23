@@ -1,19 +1,22 @@
 import numpy as np
+import pandas as pd
+import seaborn as sns
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
-import seaborn as sns
 from scipy.spatial.distance import braycurtis
 from sklearn.feature_selection import RFE
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.ensemble import RandomForestRegressor
 
-from data_cleaning import metadata, pd, combined_df, features, microbiome
+from data_cleaning import metadata, test_metadata, combined_df, features, microbiome
 from data_exploration import bray_curtis_dissimilarity, microbiome_data, important_bacteria
 
 # Split the data into training and testing sets
-X = metadata.drop(['sample', 'collection_date', 'time_diff', "baboon_id"], axis=1)
-y = microbiome.drop(['sample'], axis=1)
-
+X = test_metadata[:200]
+y = microbiome.drop(['sample'], axis=1)[:200]
+print("============================================================")
+print(len(X))
+print(len(y))
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 
@@ -37,7 +40,7 @@ plt.xlabel('Feature', fontsize=12)
 plt.ylabel('importance', fontsize=12)
 plt.xticks(rotation=90)
 plt.grid(True)
-plt.show()
+plt.savefig('Feature_importance-metadata.pdf')
 
 # Calculate the Bray-Curtis dissimilarity
 dissimilarity_score = bray_curtis_dissimilarity(y_test.values, y_pred)
@@ -75,7 +78,8 @@ for bacteria_idx in range(len(y.columns)):
     est = model.estimators_[est_num]
     feature_importances = pd.DataFrame(est.feature_importances_, columns=['importance']).sort_values('importance')
     feature_importances.plot(kind = 'barh', figsize=(10, 6), title=y.columns[bacteria_idx])
-    plt.show()
+    fig_name = "feature_importance_{imp}".format(imp = bacteria_idx)
+    plt.savefig(fig_name)
 
 
     selector = RFE(est, step=1)
@@ -102,8 +106,8 @@ sns.barplot(x=list(sumup_dict.values()), y=list(sumup_dict.keys()))
 from sklearn.feature_selection import RFECV
 from sklearn.model_selection import cross_val_score, KFold
 
-X = metadata.drop(['sample', 'collection_date', 'time_diff', "baboon_id"], axis=1)
-y = microbiome.drop(['sample'], axis=1)
+X = metadata.drop(['sample', 'collection_date','time_diff', "baboon_id"], axis=1)[:200]
+y = microbiome.drop(['sample'], axis=1)[:200]
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True, random_state=0)
@@ -140,7 +144,8 @@ for bacteria in important_bacteria:
     plt.xlabel("Number of Features Selected")
     plt.ylabel("Cross-Validated MSE")
     plt.title("RFECV Feature Selection with Cross-Validation")
-    plt.show()
+    figname = "RFECV_Feature_Selection_with_Cross-Validation_{bact}".format(bact=bacteria)
+    plt.savefig(figname)
 
     # Get the optimal number of features and the selected features
     optimal_num_features = rfecv.n_features_
@@ -178,7 +183,7 @@ print("Highly correlated features to drop:", to_drop)
 # Drop the highly correlated features from X
 X_uncorrelated = X.drop(columns=to_drop)
 
-from boruta import BorutaPy
+
 from sklearn.ensemble import RandomForestRegressor
 
 # y_common is the bacterial percentage of the most common bacteria (replace 'most_common_bacteria' with actual column)
@@ -188,15 +193,15 @@ y_common = [microbiome_data[i] for i in important_bacteria] # E.g., 'Bacteria_A'
 model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
 
 # Initialize Boruta with the RandomForest model
-boruta_selector = BorutaPy(estimator=model, n_estimators='auto', random_state=42,  alpha=0.4)
+# boruta_selector = BorutaPy(estimator=model, n_estimators='auto', random_state=42,  alpha=0.4)
 
-for i in range(len(important_bacteria)):
-  # Fit Boruta to the data (X_uncorrelated) and y_common
-  boruta_selector.fit(X_uncorrelated.values, y_common[i])
+# for i in range(len(important_bacteria)):
+#   # Fit Boruta to the data (X_uncorrelated) and y_common
+#   boruta_selector.fit(X_uncorrelated.values, y_common[i])
 
-  # Get the selected features after running Boruta
-  selected_features = X_uncorrelated.columns[boruta_selector.support_].tolist()
-  print("Selected features from Boruta:", selected_features)
+#   # Get the selected features after running Boruta
+#   selected_features = X_uncorrelated.columns[boruta_selector.support_].tolist()
+#   print("Selected features from Boruta:", selected_features)
 
-  # Create a reduced dataset with the selected features
-  X_selected_boruta = X_uncorrelated[selected_features]
+#   # Create a reduced dataset with the selected features
+#   X_selected_boruta = X_uncorrelated[selected_features]

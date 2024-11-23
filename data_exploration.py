@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import seaborn as sns
 import statsmodels.api as sm
 from matplotlib import pyplot as plt
@@ -6,7 +7,9 @@ from scipy.spatial.distance import pdist, squareform
 from sklearn.manifold import MDS
 from scipy.spatial.distance import braycurtis
 
-from data_cleaning import metadata, pd, combined_df, features, microbiome
+from data_cleaning import metadata,test_metadata, train_metadata, combined_df, features, microbiome
+
+metadata = train_metadata
 # Q1 - how many samples from each subject
 sample_cnt_per_baboon = metadata.groupby(["baboon_id"]).count()
 sample_counts = pd.DataFrame(sample_cnt_per_baboon['sample'])
@@ -31,7 +34,7 @@ plt.hist(time_diff_days, bins=80, range=(0, 200), edgecolor='black')
 plt.title('Distribution of Time Differences Between Samples')
 plt.xlabel('Time Difference (days)')
 plt.ylabel('Frequency')
-plt.show()
+plt.savefig('Distribution_Time_Differences_Between_Samples.pdf')
 
 
 # Filter out NaT values
@@ -47,7 +50,7 @@ plt.xlabel('Baboon ID')
 plt.ylabel('Time Difference (days)')
 plt.ylim(0, 600)
 plt.xticks(rotation=90, fontsize=8)
-plt.show()
+plt.savefig('Time_Differences_Between_Samples_for_Each_Baboon.pdf')
 
 # The visualization of this data was not very helpfull for our understanding because the largs number of the baboons.
 # What helped us understand this point was the below statistics.
@@ -64,7 +67,7 @@ plt.xlabel('Baboon ID')
 plt.ylabel('Time Difference (days)')
 plt.ylim(0, 150)
 plt.xticks(rotation=90)
-plt.show()
+plt.savefig('time_diff_per_baboon.pdf')
 
 filtered_df = time_diff.loc[metadata['time_diff'].dt.days > 1000]
 
@@ -78,7 +81,7 @@ correlation_matrix = combined_df[features].corr()
 plt.figure(figsize=(15, 10))
 sns.heatmap(correlation_matrix, annot=False, cmap='coolwarm', center=0)
 plt.title('Correlation Matrix Heatmap')
-plt.show()
+plt.savefig('Correlation_Matrix_Heatmap.pdf')
 
 # We observe that there is no obviouse correlation between features.
 
@@ -106,46 +109,6 @@ print("finished bray curtis")
 # Sample data: Distance matrix
 distances = bray_curtis_matrix
 
-# PCoA using MDS
-# mds = MDS(n_components=2, dissimilarity='precomputed')
-# coordinates = mds.fit_transform(distances)
-
-# Visualizing results
-# plt.figure(figsize=(8, 6))
-# plt.scatter(coordinates[:, 0], coordinates[:, 1])
-# plt.title('PCoA Visualization')
-# plt.xlabel('PCo1')
-# plt.ylabel('PCo2')
-# for i in range(len(coordinates)):
-#     plt.text(coordinates[i, 0], coordinates[i, 1], str(i+1))
-# plt.show()
-
-# Perform PCoA on the Bray-Curtis distance matrix
-# pcoa_results = pcoa(bray_curtis_matrix, number_of_dimensions=2)
-
-# Extract the coordinates
-# pcoa_coords = pcoa_results.samples
-
-# Plot PCoA results
-# plt.figure(figsize=(10, 8))
-# plt.scatter(pcoa_coords.iloc[:, 0], pcoa_coords.iloc[:, 1], c='blue')
-# plt.xlabel('PCoA 1')
-# plt.ylabel('PCoA 2')
-# plt.title('PCoA of Bray-Curtis Distances')
-# plt.show()
-#
-# pcoa_coords = pcoa_results.samples
-#
-# # Calculate the explained variance ratio
-# explained_variance_ratio = pcoa_results.eigvals / pcoa_results.eigvals.sum()
-#
-# # Print the explained variance ratio for the first two principal coordinates
-# print(f'Explained variance by PCoA1: {explained_variance_ratio[0]*100:.2f}%')
-# print(f'Explained variance by PCoA2: {explained_variance_ratio[1]*100:.2f}%')
-#
-# print(combined_df.groupby(['baboon_id']).mean()['time_diff'])
-# print(combined_df)
-# print(combined_df.groupby(['baboon_id']).shift(1))
 
 # Calculate Bray-Curtis distance matrix
 sorted_microbiome = pd.DataFrame(combined_df[microbiome.columns])
@@ -193,7 +156,7 @@ plt.title('PCA of FFQ Data Colored by Social Group', fontsize=16)
 plt.xlabel('diet_PC1', fontsize=12)
 plt.ylabel('diet_PC2', fontsize=12)
 plt.legend(title='Social Group', fontsize=12, title_fontsize=14)
-plt.show()
+plt.savefig('pca_ffq_social_grp.pdf')
 
 # Plot the first two PCs colored by seasonality
 plt.figure(figsize=(10, 6))
@@ -202,7 +165,7 @@ plt.title('PCA of FFQ Data Colored by Seasonality', fontsize=16)
 plt.xlabel('diet_PC1', fontsize=12)
 plt.ylabel('diet_PC2', fontsize=12)
 plt.legend(title='Season', fontsize=12, title_fontsize=14)
-plt.show()
+plt.savefig('pca_ffq_seasonality.pdf')
 
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x='diet_PC1', y='diet_PC2', hue='month', data=combined_df, palette='viridis')
@@ -210,7 +173,7 @@ plt.title('PCA of FFQ Data Colored by Month', fontsize=16)
 plt.xlabel('diet_PC1', fontsize=12)
 plt.ylabel('diet_PC2', fontsize=12)
 plt.legend(title='Month', fontsize=12, title_fontsize=14)
-plt.show()
+plt.savefig('pca_ffq_month.pdf')
 
 # We can see two clusters - the wet and the dry season . No appearent clustering by social groups. We wanted to check
 # whether we can see better clustering in months division then by seasons devision, but we don't see firm clusters like
@@ -316,8 +279,7 @@ plt.figure(figsize=(15, 10))
 sns.boxplot(data=microbiome)
 plt.xticks(rotation=90)
 plt.title('Distribution of Bacteria Percentages')
-plt.show()
-
+plt.savefig('bacteria_distribution.pdf')
 from sklearn.decomposition import PCA
 microbiome_data = pd.DataFrame(microbiome.drop('sample', axis=1))
 # Apply PCA to microbiome data
