@@ -1,0 +1,7 @@
+Faecalibacterium:Index(['age', 'diet_PC5', 'diet_PC8'], dtype='object')
+Bifidobacterium:Index(['age', 'diet_PC4', 'diet_PC9'], dtype='object')
+Rikenellaceae_RC9_gut_group:Index(['age', 'diet_PC1', 'diet_PC3'], dtype='object')
+Candidatus_Methanogranum:Index(['age', 'diet_PC1', 'diet_PC6', 'diet_PC10', 'diet_PC12'], dtype='object')
+Prevotella_9:Index(['age', 'diet_PC4', 'diet_PC13'], dtype='object')
+CAG-873:Index(['age', 'diet_PC1', 'diet_PC7', 'diet_PC13'], dtype='object')
+Megasphaera:Index(['age', 'diet_PC6', 'diet_PC9', 'diet_PC13'], dtype='object')

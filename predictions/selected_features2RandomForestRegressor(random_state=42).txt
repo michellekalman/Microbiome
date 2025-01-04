@@ -1,0 +1,254 @@
+[Eubacterium]_coprostanoligenes_group:Index(['diet_PC4', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+[Eubacterium]_hallii_group:Index(['age', 'diet_PC1', 'diet_PC9', 'diet_PC10', 'diet_PC11', 'diet_PC13',
+       'Faecalibacterium', 'Bifidobacterium', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+[Eubacterium]_ruminantium_group:Index(['age', 'diet_PC1', 'diet_PC2', 'diet_PC7', 'diet_PC8', 'diet_PC12',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Acidaminococcus:Index(['age', 'group_size', 'diet_PC1', 'diet_PC2', 'diet_PC3', 'diet_PC4',
+       'diet_PC5', 'diet_PC6', 'diet_PC7', 'diet_PC8', 'diet_PC9', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'diet_PC13', 'day_of_month', 'week_of_year',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Alloprevotella:Index(['diet_PC4', 'diet_PC10', 'diet_PC12', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Butyricicoccus:Index(['group_size', 'diet_PC1', 'diet_PC3', 'diet_PC5', 'diet_PC7',
+       'diet_PC8', 'diet_PC10', 'diet_PC11', 'diet_PC12', 'diet_PC13',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Campylobacter:Index(['age', 'diet_PC1', 'diet_PC6', 'Faecalibacterium', 'Bifidobacterium',
+       'Candidatus_Methanogranum', 'Megasphaera'],
+      dtype='object')
+Christensenellaceae_R-7_group:Index(['Bifidobacterium', 'Rikenellaceae_RC9_gut_group', 'Prevotella_9',
+       'CAG-873'],
+      dtype='object')
+Collinsella:Index(['age', 'group_size', 'rain_month_mm', 'month', 'diet_PC1', 'diet_PC2',
+       'diet_PC3', 'diet_PC4', 'diet_PC5', 'diet_PC6', 'diet_PC7', 'diet_PC8',
+       'diet_PC9', 'diet_PC10', 'diet_PC11', 'diet_PC12', 'diet_PC13',
+       'group_num', 'day_of_month', 'week_of_year', 'year', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Coprococcus_2:Index(['age', 'group_size', 'rain_month_mm', 'diet_PC1', 'diet_PC2',
+       'diet_PC4', 'diet_PC5', 'diet_PC10', 'diet_PC11', 'diet_PC12',
+       'diet_PC13', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Coriobacteriaceae_UCG-003:Index(['diet_PC1', 'diet_PC3', 'diet_PC4', 'diet_PC10', 'diet_PC11',
+       'diet_PC12', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Dialister:Index(['age', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Prevotella_9', 'CAG-873',
+       'Megasphaera'],
+      dtype='object')
+Elusimicrobium:Index(['sex', 'age', 'group_size', 'rain_month_mm', 'season', 'hydro_year',
+       'month', 'diet_PC1', 'diet_PC2', 'diet_PC3', 'diet_PC4', 'diet_PC5',
+       'diet_PC6', 'diet_PC7', 'diet_PC8', 'diet_PC9', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'diet_PC13', 'group_num', 'day_of_month',
+       'week_of_year', 'year', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Enterorhabdus:Index(['diet_PC1', 'diet_PC3', 'diet_PC6', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Erysipelotrichaceae_UCG-004:Index(['diet_PC9', 'CAG-873', 'Megasphaera'], dtype='object')
+Family_XIII_AD3011_group:Index(['age', 'diet_PC1', 'diet_PC3', 'diet_PC4', 'diet_PC7', 'diet_PC10',
+       'diet_PC12', 'diet_PC13', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Family_XIII_UCG-001:Index(['diet_PC10', 'diet_PC12', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873'],
+      dtype='object')
+GCA-900066575:Index(['Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9'],
+      dtype='object')
+Helicobacter:Index(['age', 'group_size', 'diet_PC1', 'diet_PC3', 'diet_PC5', 'diet_PC6',
+       'diet_PC10', 'diet_PC11', 'diet_PC12', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'Megasphaera'],
+      dtype='object')
+Lachnoclostridium:Index(['age', 'diet_PC1', 'diet_PC4', 'diet_PC6', 'diet_PC9', 'diet_PC12',
+       'diet_PC13', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'Megasphaera'],
+      dtype='object')
+Lachnospira:Index(['diet_PC1', 'diet_PC2', 'diet_PC3', 'diet_PC7', 'diet_PC10',
+       'diet_PC13', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Lachnospiraceae_FCS020_group:Index(['age', 'group_size', 'diet_PC1', 'diet_PC2', 'diet_PC3', 'diet_PC4',
+       'diet_PC5', 'diet_PC6', 'diet_PC7', 'diet_PC8', 'diet_PC9', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'diet_PC13', 'day_of_month', 'week_of_year',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Lachnospiraceae_ND3007_group:Index(['diet_PC1', 'diet_PC10', 'diet_PC11', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group', 'Prevotella_9',
+       'CAG-873', 'Megasphaera'],
+      dtype='object')
+Lachnospiraceae_NK3A20_group:Index(['diet_PC1', 'diet_PC8', 'diet_PC10', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Lactobacillus:Index(['diet_PC1', 'diet_PC10', 'diet_PC12', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'Megasphaera'],
+      dtype='object')
+Libanicoccus:Index(['diet_PC5', 'diet_PC8', 'diet_PC10', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Marvinbryantia:Index(['age', 'diet_PC1', 'diet_PC4', 'diet_PC10', 'diet_PC12',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Olsenella:Index(['diet_PC3', 'diet_PC9', 'diet_PC11', 'diet_PC13', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Oribacterium:Index(['age', 'group_size', 'diet_PC1', 'diet_PC2', 'diet_PC3', 'diet_PC4',
+       'diet_PC5', 'diet_PC6', 'diet_PC7', 'diet_PC9', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'diet_PC13', 'day_of_month',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Peptococcus:Index(['sex', 'age', 'group_size', 'rain_month_mm', 'hydro_year', 'month',
+       'diet_PC1', 'diet_PC2', 'diet_PC3', 'diet_PC4', 'diet_PC5', 'diet_PC6',
+       'diet_PC7', 'diet_PC8', 'diet_PC9', 'diet_PC10', 'diet_PC11',
+       'diet_PC12', 'diet_PC13', 'group_num', 'day_of_month', 'week_of_year',
+       'year', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Prevotella_2:Index(['age', 'diet_PC1', 'diet_PC3', 'diet_PC4', 'diet_PC6', 'diet_PC12',
+       'diet_PC13', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Prevotella_7:Index(['age', 'diet_PC1', 'diet_PC6', 'diet_PC9', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group', 'Prevotella_9',
+       'CAG-873', 'Megasphaera'],
+      dtype='object')
+Prevotellaceae_NK3B31_group:Index(['age', 'group_size', 'diet_PC1', 'diet_PC2', 'diet_PC4', 'diet_PC5',
+       'diet_PC6', 'diet_PC7', 'diet_PC8', 'diet_PC9', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'day_of_month', 'week_of_year',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Prevotellaceae_UCG-003:Index(['age', 'diet_PC3', 'diet_PC4', 'diet_PC10', 'diet_PC12',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Prevotellaceae_UCG-004:Index(['age', 'group_size', 'rain_month_mm', 'diet_PC1', 'diet_PC2',
+       'diet_PC4', 'diet_PC5', 'diet_PC6', 'diet_PC7', 'diet_PC8', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'diet_PC13', 'day_of_month', 'week_of_year',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminiclostridium_6:Index(['diet_PC4', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Megasphaera'],
+      dtype='object')
+Ruminiclostridium_9:Index(['age', 'group_size', 'rain_month_mm', 'diet_PC1', 'diet_PC3',
+       'diet_PC4', 'diet_PC5', 'diet_PC6', 'diet_PC8', 'diet_PC9', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'diet_PC13', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_NK4A214_group:Index(['diet_PC12', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-002:Index(['age', 'group_size', 'rain_month_mm', 'diet_PC1', 'diet_PC2',
+       'diet_PC4', 'diet_PC6', 'diet_PC7', 'diet_PC11', 'diet_PC13',
+       'week_of_year', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-003:Index(['age', 'group_size', 'rain_month_mm', 'diet_PC1', 'diet_PC2',
+       'diet_PC3', 'diet_PC4', 'diet_PC5', 'diet_PC6', 'diet_PC7', 'diet_PC8',
+       'diet_PC9', 'diet_PC10', 'diet_PC11', 'diet_PC12', 'diet_PC13',
+       'day_of_month', 'week_of_year', 'year', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-005:Index(['diet_PC1', 'diet_PC9', 'diet_PC11', 'Rikenellaceae_RC9_gut_group',
+       'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-008:Index(['group_size', 'diet_PC1', 'diet_PC6', 'diet_PC11', 'diet_PC12',
+       'diet_PC13', 'day_of_month', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-009:Index(['age', 'group_size', 'diet_PC1', 'diet_PC3', 'diet_PC8', 'diet_PC9',
+       'diet_PC11', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-010:Index(['diet_PC4', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum', 'CAG-873',
+       'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-011:Index(['sex', 'age', 'group_size', 'rain_month_mm', 'season', 'hydro_year',
+       'month', 'diet_PC1', 'diet_PC2', 'diet_PC3', 'diet_PC4', 'diet_PC5',
+       'diet_PC6', 'diet_PC7', 'diet_PC8', 'diet_PC9', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'diet_PC13', 'group_num', 'day_of_month',
+       'week_of_year', 'year', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-013:Index(['age', 'group_size', 'diet_PC1', 'diet_PC3', 'diet_PC6', 'diet_PC8',
+       'diet_PC12', 'Faecalibacterium', 'Bifidobacterium',
+       'Rikenellaceae_RC9_gut_group', 'Candidatus_Methanogranum',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcaceae_UCG-014:Index(['Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Ruminococcus_1:Index(['diet_PC1', 'diet_PC3', 'diet_PC5', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Senegalimassilia:Index(['age', 'group_size', 'diet_PC1', 'diet_PC2', 'diet_PC4', 'diet_PC6',
+       'diet_PC7', 'diet_PC9', 'diet_PC10', 'diet_PC12', 'diet_PC13',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Slackia:Index(['diet_PC1', 'diet_PC4', 'diet_PC6', 'diet_PC10', 'diet_PC12',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Solobacterium:Index(['age', 'diet_PC1', 'diet_PC3', 'diet_PC12', 'diet_PC13',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873'],
+      dtype='object')
+Streptococcus:Index(['group_size', 'diet_PC6', 'diet_PC9', 'diet_PC12', 'diet_PC13',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873'],
+      dtype='object')
+Succinivibrio:Index(['age', 'group_size', 'rain_month_mm', 'hydro_year', 'month', 'diet_PC1',
+       'diet_PC2', 'diet_PC3', 'diet_PC4', 'diet_PC5', 'diet_PC6', 'diet_PC7',
+       'diet_PC8', 'diet_PC9', 'diet_PC10', 'diet_PC11', 'diet_PC12',
+       'diet_PC13', 'day_of_month', 'week_of_year', 'year', 'Faecalibacterium',
+       'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')
+Treponema_2:Index(['age', 'group_size', 'diet_PC1', 'diet_PC2', 'diet_PC3', 'diet_PC4',
+       'diet_PC5', 'diet_PC6', 'diet_PC7', 'diet_PC9', 'diet_PC10',
+       'diet_PC11', 'diet_PC12', 'diet_PC13', 'day_of_month',
+       'Faecalibacterium', 'Bifidobacterium', 'Rikenellaceae_RC9_gut_group',
+       'Candidatus_Methanogranum', 'Prevotella_9', 'CAG-873', 'Megasphaera'],
+      dtype='object')

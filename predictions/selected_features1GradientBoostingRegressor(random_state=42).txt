@@ -1,0 +1,11 @@
+Faecalibacterium:Index(['age'], dtype='object')
+Bifidobacterium:Index(['age'], dtype='object')
+Rikenellaceae_RC9_gut_group:Index(['age'], dtype='object')
+Candidatus_Methanogranum:Index(['sex', 'age', 'group_size', 'rain_month_mm', 'diet_PC1', 'diet_PC2',
+       'diet_PC3', 'diet_PC4', 'diet_PC5', 'diet_PC6', 'diet_PC7', 'diet_PC8',
+       'diet_PC9', 'diet_PC10', 'diet_PC11', 'diet_PC12', 'diet_PC13',
+       'group_num', 'day_of_month'],
+      dtype='object')
+Prevotella_9:Index(['age'], dtype='object')
+CAG-873:Index(['age', 'diet_PC4'], dtype='object')
+Megasphaera:Index(['age', 'diet_PC8', 'diet_PC13'], dtype='object')
