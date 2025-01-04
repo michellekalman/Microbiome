@@ -7,9 +7,8 @@ from scipy.spatial.distance import pdist, squareform
 from sklearn.manifold import MDS
 from scipy.spatial.distance import braycurtis
 
-from data_cleaning import metadata,test_metadata, train_metadata, combined_df, features, microbiome
+from data_cleaning import metadata, combined_df, features, microbiome, test_metadata, test_microbiome
 
-metadata = train_metadata
 # Q1 - how many samples from each subject
 sample_cnt_per_baboon = metadata.groupby(["baboon_id"]).count()
 sample_counts = pd.DataFrame(sample_cnt_per_baboon['sample'])
@@ -18,10 +17,10 @@ sample_counts.head(10)
 # Q1 - time differences
 # Calculate the time difference between samples
 metadata['time_diff'] = metadata.groupby('baboon_id')['collection_date'].diff()
+test_metadata['time_diff'] = test_metadata.groupby('baboon_id')['collection_date'].diff()
 
 # Display the result
 print(metadata[['baboon_id', 'collection_date', 'time_diff']])
-metadata['time_diff'] = metadata.groupby('baboon_id')['collection_date'].diff()
 time_diff = metadata[['baboon_id', 'collection_date', 'time_diff']]
 print(time_diff.loc[time_diff['baboon_id']==4])
 
@@ -97,7 +96,7 @@ print(bray_curtis_df)
 samples_per_baboon2 = combined_df.groupby('baboon_id')['sample'].apply(list).reset_index()
 
 for baboon in samples_per_baboon2['baboon_id']:
-    print('bray curtis subsequental dists for baboon: ', baboon)
+    # print('bray curtis subsequental dists for baboon: ', baboon)
     samples = list(samples_per_baboon2[samples_per_baboon2['baboon_id'] == baboon]['sample'])
     my_bc = bray_curtis_df.loc[samples[0],samples[0]]
     subsequented_dists = [my_bc.iloc[i, i+1] for i in range(len(my_bc) - 1)]
@@ -250,6 +249,7 @@ for baboon_id, group in grouped:
 average_dissimilarity_naive = sum(dissimilarities) / len(dissimilarities)
 print(f'Average Bray-Curtis Dissimilarity (Naive): {average_dissimilarity_naive}')
 
+#0 means same 1 means completely same
 def bray_curtis_dissimilarity(sample1, sample2):
     # Ensure both samples have the same shape
     if sample1.shape != sample2.shape:

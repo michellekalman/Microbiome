@@ -8,15 +8,13 @@ from sklearn.feature_selection import RFE
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.ensemble import RandomForestRegressor
 
-from data_cleaning import metadata, test_metadata, combined_df, features, microbiome
-from data_exploration import bray_curtis_dissimilarity, microbiome_data, important_bacteria
+from data_cleaning import metadata, test_metadata, microbiome, test_microbiome
+from data_exploration import bray_curtis_dissimilarity, important_bacteria
 
 # Split the data into training and testing sets
-X = test_metadata[:200]
-y = microbiome.drop(['sample'], axis=1)[:200]
-print("============================================================")
-print(len(X))
-print(len(y))
+X = metadata.drop(['sample', 'collection_date','time_diff', "baboon_id"], axis=1)
+y = microbiome.drop(['sample'], axis=1)
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 
@@ -59,12 +57,6 @@ print(brey_curtis_dist)
 Y_df = pd.DataFrame(y_pred)
 print(model.feature_importances_)
 
-metadata['day_of_month'] = metadata['collection_date'].dt.day
-metadata['week_of_year'] = metadata['collection_date'].dt.isocalendar().week
-metadata['year'] = metadata['collection_date'].dt.year
-
-
-
 
 model = MultiOutputRegressor(RandomForestRegressor())
 model = model.fit(X_train, y_train)
@@ -106,8 +98,8 @@ sns.barplot(x=list(sumup_dict.values()), y=list(sumup_dict.keys()))
 from sklearn.feature_selection import RFECV
 from sklearn.model_selection import cross_val_score, KFold
 
-X = metadata.drop(['sample', 'collection_date','time_diff', "baboon_id"], axis=1)[:200]
-y = microbiome.drop(['sample'], axis=1)[:200]
+X = metadata.drop(['sample', 'collection_date','time_diff', "baboon_id"], axis=1)
+y = microbiome.drop(['sample'], axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True, random_state=0)
@@ -166,31 +158,31 @@ print(selected_features_df)
 # This code is for the borua algorithm we tried to implement on our data,
 # we didn't get the results we were looking for even though we tried different alpha values :(
 
-X = metadata.drop(['sample', 'collection_date', 'time_diff', "baboon_id"], axis=1)
-y = microbiome.drop(['sample'], axis=1)
+# X = metadata.drop(['sample', 'collection_date', 'time_diff', "baboon_id"], axis=1)
+# y = microbiome.drop(['sample'], axis=1)
 
-# Compute the correlation matrix
-correlation_matrix = X.corr().abs()
+# # Compute the correlation matrix
+# correlation_matrix = X.corr().abs()
 
-# Identify features that are highly correlated (threshold can be adjusted)
-threshold = 0.85
-upper_triangle = correlation_matrix.where(np.triu(np.ones(correlation_matrix.shape), k=1).astype(bool))
+# # Identify features that are highly correlated (threshold can be adjusted)
+# threshold = 0.85
+# upper_triangle = correlation_matrix.where(np.triu(np.ones(correlation_matrix.shape), k=1).astype(bool))
 
-# Find features to drop (those with correlation > threshold)
-to_drop = [column for column in upper_triangle.columns if any(upper_triangle[column] > threshold)]
-print("Highly correlated features to drop:", to_drop)
+# # Find features to drop (those with correlation > threshold)
+# to_drop = [column for column in upper_triangle.columns if any(upper_triangle[column] > threshold)]
+# print("Highly correlated features to drop:", to_drop)
 
-# Drop the highly correlated features from X
-X_uncorrelated = X.drop(columns=to_drop)
+# # Drop the highly correlated features from X
+# X_uncorrelated = X.drop(columns=to_drop)
 
 
-from sklearn.ensemble import RandomForestRegressor
+# from sklearn.ensemble import RandomForestRegressor
 
-# y_common is the bacterial percentage of the most common bacteria (replace 'most_common_bacteria' with actual column)
-y_common = [microbiome_data[i] for i in important_bacteria] # E.g., 'Bacteria_A'
+# # y_common is the bacterial percentage of the most common bacteria (replace 'most_common_bacteria' with actual column)
+# y_common = [microbiome_data[i] for i in important_bacteria] # E.g., 'Bacteria_A'
 
-# Initialize a RandomForestRegressor
-model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
+# # Initialize a RandomForestRegressor
+# model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
 
 # Initialize Boruta with the RandomForest model
 # boruta_selector = BorutaPy(estimator=model, n_estimators='auto', random_state=42,  alpha=0.4)
@@ -205,3 +197,4 @@ model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
 
 #   # Create a reduced dataset with the selected features
 #   X_selected_boruta = X_uncorrelated[selected_features]
+

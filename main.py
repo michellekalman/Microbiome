@@ -1,34 +1,49 @@
 import pandas as pd
 import numpy as np
-from scipy.spatial.distance import braycurtis
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
-from data_exploration import important_bacteria
-from data_cleaning import microbiome, test_metadata, train_metadata
-from data_exploration import bray_curtis_dissimilarity, microbiome_data, important_bacteria
+from data_cleaning import microbiome, metadata, test_microbiome, test_metadata
+from data_exploration import important_bacteria, bray_curtis_dissimilarity
 
 from model import *
 
-X_train = train_metadata.drop(['sample', 'collection_date','time_diff', "baboon_id"], axis=1)
+train_sample = metadata['sample']
+test_sample = microbiome['sample']
+
+X_train = metadata.drop(['sample', 'collection_date','time_diff', "baboon_id"], axis=1)
 y_train = microbiome.drop(['sample'], axis=1)
-X_test = test_metadata.drop(['sample', 'collection_date','time_diff', "baboon_id"], axis=1)
-y_test = np.zeros((len(X_test), len(y_train.columns)))
+
+X_test = test_metadata.drop(['collection_date','time_diff', "baboon_id"], axis=1)
+y_test = test_microbiome
+
+X_test_check = X_test[X_test['sample'].isin(y_test['sample'])]
+X_test_predict = X_test[~X_test['sample'].isin(y_test['sample'])]
+
+y_test = y_test.drop(['sample'], axis=1)
+X_test_check = X_test_check.drop(['sample'], axis=1)
+X_test_predict = X_test_predict.drop(['sample'], axis=1)
+X_test = X_test.drop(['sample'], axis=1)
+
+X_train = X_train
+X_test_check = X_test_check
+y_train = y_train
+X_test_predict = X_test_predict
+y_test = y_test
+X_test = X_test
+print("X_train:\n", X_train.columns)
+print("y_train:\n", y_train.columns)
+print("X_test_check:\n", X_test_check.columns)
+print("X_test_predict:\n", X_test_predict.columns)
+print("y_test:\n", y_test.columns)
+print("X_test:\n", X_test.columns)
+
 if __name__ == "__main__":
+    train_sample.to_csv("sample.csv", index=False)
+    print("\nhi\n")
     rfr = RandomForestRegressor(random_state=42)
     gbr = GradientBoostingRegressor(random_state=42)
+
     selected_features_dict_rf, y_pred_rf = RSECV_for_important_bacteria(2, rfr, X_train, y_train, X_test, important_bacteria)
-    print(selected_features_dict_rf, y_pred_rf)
-
     selected_features_dict_gb, y_pred_gb = RSECV_for_important_bacteria(2, gbr, X_train, y_train, X_test, important_bacteria)
-
-    # Peak to  see the important features
-    print("from random forest:")
-    print(selected_features_dict_rf)
-    print("from gradient boost:")
-    print(selected_features_dict_gb)
-
-    # Lets check our predictions for the important bacteria based on their important features
-    rf_by_important_scores = evaluate_model(y_test, y_pred_rf)
-    gb_by_important_scores = evaluate_model(y_test, y_pred_gb)
 
     # Compare to same model based on all features
     from scipy.spatial.distance import braycurtis
@@ -49,52 +64,51 @@ if __name__ == "__main__":
             y_pred[col] = mod.predict(X_test)
 #            scores_normal_model[col] = braycurtis(y_pred[col], y_test[col])
         output = pd.DataFrame(y_pred)
-        output.to_csv("predictions{model}.csv".format(model=mod), index=False)
-
-    # Compare
-    # print("from random forest:")
-    # print("normal:")
-    # print(scores_normal_rf)
-    # print("feature selection:")
-    # print(rf_by_important_scores)
-    # print("from gradient boost:")
-    # print("normal:")
-    # print(scores_normal_gb)
-    # print("feature selection:")
-    # print(gb_by_important_scores)
+        output.to_csv("predictions_{model}_normal.csv".format(model=mod), index=False)
 
 
     # print(y_pred_gb)
-
+    print("========================== finished with stage 1 ===================================")
     X_test_new, y_test_new, X_train_new, y_train_new = merge_important_bacteria_with_metadata(X_test, y_pred_gb, y_test, X_train, y_train)
-
-    # Compare to same model based on all features
-    
+    print("\n",X_test_new,"\n", y_test_new,"\n", X_train_new,"\n", y_train_new)
     rf_reg = RandomForestRegressor(random_state=42)
     gb_reg = GradientBoostingRegressor(random_state=42)
-    scores_normal_rf_new = {}
-    scores_normal_gb_new = {}
-    for mod in ['rf', 'gb']:
-        if mod == 'rf':
-            mod = rf_reg
-            scores_normal_model = scores_normal_rf_new
-        else:
-            mod = gb_reg
-            scores_normal_model = scores_normal_gb_new
-        for col in important_bacteria:
-            mod.fit(X_train_new, y_train_new[col])
-            y_pred = mod.predict(X_test_new)
-            scores_normal_model[col] = braycurtis(y_pred, y_test_new[col])
+    selected_features_dict2_rf = RSECV_for_unimportant_bacteria_selected_features_meta(2, rf_reg, X_train_new, y_train_new, X_test_new, selected_features_dict_rf)
+    selected_features_dict2_gb = RSECV_for_unimportant_bacteria_selected_features_meta(2, gb_reg, X_train_new, y_train_new, X_test_new, selected_features_dict_gb)
+    
+    print("========================== finished with stage 2 ===================================")
+    y_pred2_rf = predict_unimportant_baecteria(rf_reg, X_train_new, y_train_new, X_test_new, selected_features_dict2_rf)
+    y_pred2_gb = predict_unimportant_baecteria(gb_reg, X_train_new, y_train_new, X_test_new, selected_features_dict2_rf)
+
+    print("========================== finished with stage 3 ===================================")
+    output2_rf = pd.DataFrame(y_pred2_rf)
+    output2_rf.to_csv("predictions2_rf.csv", index=False)
+    output2_gb = pd.DataFrame(y_pred2_gb)
+    output2_gb.to_csv("predictions2_gb.csv", index=False)
+    '''
+    scores_gb = evaluate_model(y_test, y_pred2_gb)
+    socres_dissimilarity_gb = bray_curtis_dissimilarity(y_pred2_gb, y_test)
+    scores_rf = evaluate_model(y_test, y_pred2_rf,)
+    socres_dissimilarity_rf = bray_curtis_dissimilarity(y_pred2_rf, y_test)
+
+    scores_gb_norm = evaluate_model(y_test, y_pred_gb)
+    scores_rf_norm = evaluate_model(y_test, y_pred_rf)
 
     print("from random forest:")
     print("based on new data:")
-    print(scores_normal_rf_new)
-    print("normal:")
-    print(scores_normal_rf)
-    print("from gradient boost:")
-    print("our data:")
-    print(scores_normal_gb_new)
-    print("normal:")
-    print(scores_normal_gb)
+    print("bray curtis:")
+    print(scores_rf)
+    print("bray curtis dissimilarity - manually calculated:")
+    print(socres_dissimilarity_rf)
+    print("normal random forest:")
+    print(scores_rf_norm)
 
-    # we see slightly better results on our model!
+    print("from gradient boost:")
+    print("based on new data:")
+    print("bray curtis:")
+    print(scores_gb)
+    print("bray curtis dissimilarity - manually calculated:")
+    print(socres_dissimilarity_gb)
+    print("normal random forest:")
+    print(scores_gb_norm)
+    # we see slightly better results on our model!'''
